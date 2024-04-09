@@ -39,20 +39,38 @@ def display_city(state: str) -> str:
   else:
     return("")
 
-def check_and_print_input(input: str):
-  result = display_city(input)
+def check_and_print_input(input_str: str):
+  result = display_city(input_str)
   if result != "":
     print(result)
-    sys.exit(0)
-  result = display_state(input)
+    return 0
+  result = display_state(input_str)
   if result != "":
     print(result)
-    sys.exit(0)
+    return (0)
   else:
-    print(f"{input} is neither a capital city nor a state")
+    print(f"{input_str} is neither a capital city nor a state")
 
-def main(input: str):
-  check_and_print_input(str)
+def input_check(input_str: str) -> list:
+  x = input_str.find(',,')
+  if (x != -1):
+    sys.exit(1)
+  lst = input_str.split(',')
+  i = 0
+  for item in lst:
+    lst[i] = item.strip()
+    i += 1
+  i = 0
+  for item in lst:
+    lst[i] = item.title()
+    i += 1
+  return lst
+
+def main(input_str: str):
+  input_lst = input_check(input_str)
+  for item in input_lst:
+    if item != "":
+      check_and_print_input(item)
 
 if __name__ == "__main__":
   if len(sys.argv) > 2:
