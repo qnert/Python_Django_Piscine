@@ -22,7 +22,7 @@ def test_text():
     assert str(Text('"')) == '&quot;'
     print('Text behaviour : OK.')
 
-    
+
 def test_elem_basics():
     # Default behaviour :
     assert str(Elem()) == '<div></div>'
@@ -38,7 +38,7 @@ def test_elem_basics():
  <div></div>\n</div>'
     print('Basic Elem behaviour : OK.')
 
-    
+
 def test_empty_texts():
     assert str(Elem(content=Text(''))) == '<div></div>'
     assert str(Elem(content=[Text(''), Text('')])) == '<div></div>'
@@ -46,7 +46,7 @@ def test_empty_texts():
 \n  <div></div>\n</div>'
     print('Elem with empty texts : OK.')
 
-    
+
 def test_errors():
     # Type error if the content isn't made of Text or Elem.
     try:
@@ -72,7 +72,7 @@ def test_errors():
         raise(Exception("incorrect behaviour."))
     except Exception as e:
         assert isinstance(e, Elem.ValidationError)
-    
+
     # Or with lists :
     try :
         elem = Elem()
@@ -88,7 +88,7 @@ def test_errors():
         raise(Exception("incorrect behaviour."))
     except Exception as e:
         assert isinstance(e, Elem.ValidationError)
-    
+
     try:
         elem = Elem(content='')
         raise(Exception("incorrect behaviour."))
@@ -115,7 +115,7 @@ def test():
     test_embedding()
     test_empty_texts()
     test_errors()
-    
+
 if __name__ == '__main__':
     try :
         test()

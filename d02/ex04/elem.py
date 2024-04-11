@@ -7,19 +7,16 @@ class Text(str):
 
     Because directly using str class was too mainstream.
     """
-
     def __str__(self):
         """
         Do you really need a comment to understand this method?..
         """
         return super().__str__().replace('\n', '\n<br />\n')
 
-
 class Elem:
     """
     Elem will permit us to represent our HTML elements.
     """
-    [...]
 
     def __init__(self, tag='div', attr={}, content=None, tag_type='double'):
         """
@@ -27,7 +24,10 @@ class Elem:
 
         Obviously.
         """
-        [...]
+        self.tag = tag
+        self.attr = attr
+        self.content = content
+        self.tag_type = tag_type
 
     def __str__(self):
         """
@@ -36,10 +36,15 @@ class Elem:
         Make sure it renders everything (tag, attributes, embedded
         elements...).
         """
+        result = "<" + self.tag
         if self.tag_type == 'double':
-            [...]
+          for key in self.attr.keys():
+              result += " " + key + "=" + self.attr[key]
+          result += ">" + self.content + "</" + self.tag + ">"
         elif self.tag_type == 'simple':
-            [...]
+          for key in self.attr.keys():
+            result += " " + key + "=" + self.attr[key]
+          result += "/>"
         return result
 
     def __make_attr(self):
