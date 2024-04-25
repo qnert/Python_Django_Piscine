@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <h3>Ex01: Display process of a static page.</h3>
+  {% block style %}
+  <link rel="stylesheet" type="text/css" href="{% static 'style1.css' %}" />
+  {% endblock style %}
+  <ol>
+    <li>Request Handling:</li>
+    <ul>
+      <li>When a user's browser sends a request for a particular URL, it's intercepted by Django's URL dispatcher.</li>
+      <li>The URL dispatcher maps the requested URL to a specific view function based on the URL patterns defined in the project's urls.py file.</li>
+    </ul>
+    <li>View Function Execution:</li>
+    <ul>
+      <li>Once the URL dispatcher determines the appropriate view function, it invokes that function.</li>
+      <li>The view function performs any necessary business logic, such as fetching data from a database or processing user input.</li>
+      <li>In the case of displaying a static web page from a simple template, the view function typically renders a template using Django's template engine.</li>
+    </ul>
+    <li>Template Rendering:</li>
+    <ul>
+      <li>The view function renders a template by combining it with context data.</li>
+      <li>Context data may include variables or objects that are passed from the view to the template, allowing dynamic content to be displayed.</li>
+    </ul>
+    <li>HTML Response Generation:</li>
+    <ul>
+      <li>Once the template is rendered with the appropriate context data, Django generates an HTML response.</li>
+      <li>This HTML response includes the content of the rendered template, which may include static HTML markup as well as dynamically generated content.</li>
+    </ul>
+    </ul>
+    <li>Sending Response to Browser:</li>
+    <ul>
+      <li>Django sends the HTML response back to the user's browser as an HTTP response.</li>
+      <li>The browser receives the response and renders the HTML content, displaying the static web page to the user.</li>
+    </ul>
+    </ol>
+</html>
